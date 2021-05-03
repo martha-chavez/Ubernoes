@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lista de Usuarios</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140875710-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-140875710-1');
+        </script>
+    </head>
+    <body>
+        <div class="container">
+        <h3><a href="/usuarios/create">Create</a></h3>
+        <h1>Usuarios List</h1>
+            {% if usuarios is not empty %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>nombre</th>
+                            <th>paterno</th>
+                            <th>materno</th>
+                            <th>correo</th>
+                            <th>pass</th>
+                            <th>nacimiento</th>
+                            <th>autos</th>
+                            <th>licencia</th>
+                            <th>Operaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for usuario in usuarios %}
+                        <tr>
+                            <td>{{ usuario._id }}</td>
+                            <td>{{ usuario.nombre }}</td>
+                            <td>{{ usuario.paterno }}</td>
+                            <td>{{ usuario.materno }}</td>
+                            <td>{{ usuario.correo }}</td>
+                            <td>{{ usuario.pass }}</td>
+                            <td>{{ usuario.nacimiento }}</td>
+                            <td>{{ usuario.autos }}</td>
+                            <td>{{ usuario.licencia }}</td>
+                            <td>
+                                <a href="/usuarios/edit/{{ usuario._id }}">EDIT</a>
+                                <form action="/usuarios/delete/{{ usuario._id }}" method="post">
+                                  <button type="submit">DELETE</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div>Sin usuarios</div>
+            {% endif %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,93 @@
+{% extends 'layout_index.twig' %}
+
+{% block login %}
+  <div class="banner-bot">
+<div class="container">
+<div class="row justify-content-center">
+  <h1 align="center" ><a href="/index" class="logo text-wh">UberNoEs</a></h1>
+  <div class="col-md-9">
+  <form id="formLogin" method="post" action="/usuarios/index">
+  <div class="form-group">
+    <input id="mail" name="mail" type="email" class="form-control text-white"  aria-describedby="emailHelp" placeholder="Enter email: "  style = "background-color: transparent">
+  </div>
+  <div class="form-group">
+    <input id="pass" name="pass" type="password" class="form-control"  placeholder="Password: "  style = "background-color: transparent">
+  </div>
+  <div class="trans text-center">
+        <button id="btnLogin" type="button" class="btn button-style btn-sm btn-block" style = "background-color: transparent; padding:0;margin-top:0rem">Iniciar Sesión</button>
+        <button type="button" class="btn button-style btn-sm btn-block" onclick="registroon()" style = "background-color: transparent; padding:0">Registrarse</button>
+  </div>
+  </form>
+  </div>
+</div>
+</div>
+<div class="container">
+<div class="row justify-content-center p-3">
+<div  class="g-signin2" data-onsuccess="onSignIn" data-width="250"></div>
+<div class="fb-login-button" data-width="250" data-size="medium" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="true"></div>
+</div>
+<div class="row justify-content-center ">
+</div>
+  </div>
+</div>
+{% endblock %}
+
+{% block registro %}
+<div class="text-center float-left" id="registro" style="display:none;">
+<div class="text-center center-block">
+       <h1 align="center" class="text-black">Registro</h1>
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-9">
+<form id="formregistro">
+<div class="form-row">
+<div class="form-group col-md-4">
+<label class="text-black"  for="inputAddress"><strong>Nombre</strong></label>
+<input type="text" class="form-control text-black" style = "background-color: transparent; font-size: 14pt; color:black;" id="nombre"  name="nombre" placeholder="UberNoEs" pattern="[a-zA-Z\s]*"required >
+</div>
+<div class="form-group col-md-4">
+<label class="text-black" for="inputtext"><strong>Apellido Paterno</strong></label>
+<input type="text" class="form-control text-black" style = "background-color: transparent; font-size: 14pt;color:black;" name="paterno" id="paterno" placeholder="Paterno" pattern=[a-zA-Z]* required >
+</div>
+<div class="form-group col-md-4">
+<label class="text-black" for="inputtext"><strong>Apellido Materno</strong></label>
+<input type="text"  class="form-control text-black" style = "background-color: transparent; font-size: 14pt; color:black;" id="materno" placeholder="Materno" name="materno"  pattern=[a-zA-Z]* required >
+</div>
+</div>
+<div class="form-row">
+<div class="form-group col-md-4">
+<label class="text-black" for="inputEmail4"><strong>Email</strong></label>
+<input type="email" class="form-control text-black" name="correo" style = "background-color: transparent; font-size: 14pt; color:black;" id="correo" placeholder="Email"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required>
+</div>
+<div class="form-group col-md-3" >
+<label class="text-black" for="inputPassword4"><strong>Password</strong></label>
+<input type="password" class="form-control text-greenyellow" style = "background-color: transparent; font-size: 14pt;color:black;" id="passwd" name="passwd" placeholder="Password">
+</div>
+<div class="form-group col-md-5" >
+<label class="text-black" for="inputAddress2"><strong>Fecha de Nacimiento</strong></label>
+<input type="date" id="nacimiento" name="nacimiento" style = "background-color: transparent; font-size: 14pt; color:black;"  class="form-control text-black" id="date" required>
+</div>
+</div>
+<div class="trans text-center text-black">
+<button type="button" id ="btnLoginreg" class="btn button-style text-black" style = "background-color: transparent; color:green;font-size: 14pt;"  ><strong>Registrar</strong> </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+{% endblock %}
+
+{% block resources %}
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.3&appId=2350677361866891&autoLogAppEvents=1"></script>
+  <script src="scripts/login.js"></script>
+  <script src="scripts/loginRedes.js"></script>
+{% endblock %}
+
+{% block metas %}
+	<meta name="google-signin-client_id" content="255467230199-5r2r85lp5m1sn0ms5r0f8mkkqnln1j34.apps.googleusercontent.com">
+{% endblock %}

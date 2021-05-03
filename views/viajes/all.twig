@@ -1,0 +1,85 @@
+{% extends 'gallery.twig' %}
+
+{% block allAva %}
+  {% if viajes is not empty %}
+      {% for viaje in viajes %}
+      <div class="col-md-4 col-lg-2.5 m-2 mb-3 p-2 center-block border border-secondary rounded" style="background: url(../images/f.png); margin:0.5rem;">
+
+        <a href="#{{ viaje._id }}" style="text-decoration:none;">
+          <center>
+            <h3 class="text-center text-dark text-uppercase"> {{ viaje.origen.nombre }} <br> </h3>
+            <h4 class="text-center text-dark"> a <br> </h4>
+            <h3 class="text-center text-dark text-uppercase"> {{ viaje.destino.nombre }} <br> </h3>
+            <br>
+            <span class="text-dark font-weight-bold">Cupo:</span>
+            <span class="text-secondary">{{ viaje.cupo }}<br></span>
+            <br>
+            <span class="text-dark font-weight-bold">Descripcion:</span>
+            <span class="text-secondary">{{ viaje.descripcion }}<br></span>
+            <br>
+            <span class="text-dark font-weight-bold">Tarifa/persona:</span>
+            <span class="text-secondary">{{ viaje.tarifa }}<br></span>
+            <br>
+            <span class="text-dark font-weight-bold">Fecha:</span>
+            <span class="text-secondary">{{ viaje.horaFecha|date('Y-m-d') }}<br></span>
+          </center>
+         </a>
+
+      </div>
+      {% endfor %}
+  {% else %}
+
+  {% endif %}
+{% endblock %}
+
+{% block popUps %}
+{% if viajes is not empty %}
+  {% for viaje in viajes %}
+  <div id="{{ viaje._id }}" class="pop-overlay animate">
+    <div class="popup">
+      <h4 class="text-center text-dark"> Detalles del viaje <br></h4>
+      <br>
+      <span class="text-dark font-weight-bold">De:</span>
+      <span class="text-secondary">{{ viaje.origen.nombre }}<br></span>
+      <span class="text-dark font-weight-bold">A:</span>
+      <span class="text-secondary">{{ viaje.destino.nombre }}<br></span>
+      <br>
+      <span class="text-dark font-weight-bold">Lugares restantes:</span>
+      <span class="text-secondary">{{ viaje.cupo }}<br></span>
+      <br>
+      <span class="text-dark font-weight-bold">Breve descripcion:</span>
+      <span class="text-secondary">{{ viaje.descripcion }}<br></span>
+      <br>
+      <span class="text-dark font-weight-bold">Horario de salida</span>
+      <br>
+      <span class="text-dark font-weight-bold">Hora:</span>
+      <span class="text-secondary">{{ viaje.horaFecha|date('H:i:s') }}<br></span>
+      <span class="text-dark font-weight-bold">Fecha:</span>
+      <span class="text-secondary">{{ viaje.horaFecha|date('Y-m-d') }}<br></span>
+      <br>
+      <span class="text-dark font-weight-bold">Costo de recuperacion:</span>
+      <span class="text-secondary">${{ viaje.tarifa }}<br></span>
+      <br>
+      <span class="text-dark font-weight-bold">Placas del auto:</span>
+      <span class="text-secondary">{{ viaje.placasAuto }}<br></span>
+      <center>
+        <button id="{{ viaje._id }}" type="button" class="btn btn-success mt-3">Participar</button>
+      </center>
+      <a class="close" href="#gallery">&times;</a>
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+{% else %}
+  <h3 class="text-center text-dark text-uppercase"> Sin viajes disponibles <br> </h3>
+  <h4 class="text-center text-dark text-uppercase"> Intenta mas tarde... <br> </h4>
+{% endif %}
+{% endblock %}
+
+{% block resources %}
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.3&appId=2350677361866891&autoLogAppEvents=1"></script>
+  <script src="../scripts/addViaje.js"></script>
+{% endblock %}

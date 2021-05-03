@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mis Viajes</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900">
+    <link rel="stylesheet" href="../css/bootstrap.principal.css">
+    <link rel="stylesheet" href="../css/principal.css">
+    <link rel="stylesheet" type="text/css" href="../css/calificar.css">
+  </head>
+  <body style="background-image: url(../images/disp.jpg); background-size: cover;">
+    <div class="site-section">
+      <div class="container">
+      <strong><h1 class=" tittle text-bl let" align="center"> Viajes de {{ correo }}</h1></strong>
+      <br/>
+        <div class="row mb-5">
+        {% if viajes is not empty %}
+            {% for viaje in viajes.viajes %}
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="post-entry bg-white">
+                  <div class="image">
+                    <img src="/../images/car.png" alt="Image" class="img-fluid rounded-circle">
+                  </div>
+                  <center>
+                  <div class="text p-4">
+                    <h4 class="text-dark">Mi Viaje<br></h4>
+                    <span class="text-dark font-weight-bold">De:</span>
+                    <span class="text-secondary">{{ viaje.origen.nombre }}<br></span>
+                    <span class="text-dark font-weight-bold">A:</span>
+                    <span class="text-secondary">{{ viaje.destino.nombre }}<br></span>
+                    <span class="text-dark font-weight-bold">Lugares restantes:</span>
+                    <span class="text-secondary">{{ viaje.cupo }}<br></span>
+                    <span class="text-dark font-weight-bold">Breve descripcion:</span>
+                    <span class="text-secondary">{{ viaje.descripcion }}<br></span>
+                    <span class="text-dark font-weight-bold">Horario de salida</span>
+                    <span class="text-dark font-weight-bold">Hora:</span>
+                    <span class="text-secondary">{{ viaje.horaFecha|date('H:i:s') }}<br></span>
+                    <span class="text-dark font-weight-bold">Fecha:</span>
+                    <span class="text-secondary">{{ viaje.horaFecha|date('Y-m-d') }}<br></span>
+                    <span class="text-dark font-weight-bold">Costo de recuperacion:</span>
+                    <span class="text-secondary">${{ viaje.tarifa }}<br></span>
+                    <span class="text-dark font-weight-bold">Placas del auto:</span>
+                    <span class="text-secondary">{{ viaje.placasAuto }}<br></span>
+                    <span class="text-dark font-weight-bold">Calificaciones</span><br>
+                    {% for calificacion in viaje.calificaciones %}
+                    <span class="text-dark font-weight-bold">Chofer: </span>
+                    <span class="text-secondary">{{ calificacion.chofer }} puntos<br></span>
+                    <span class="text-dark font-weight-bold">Viaje: </span>
+                    <span class="text-secondary">{{ calificacion.viaje }} puntos<br></span>
+                    {% endfor %}
+                  </div>
+                  </center>
+                </div>
+              </div>
+            {% endfor %}
+              {% else %}
+                  <div>Usuario no encotrado...</div>
+            {% endif %}
+
+            {% if cViajes is not empty %}
+              {% for viaje in cViajes %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                  <div class="post-entry bg-white">
+                    <div class="image">
+                      <img src="/../images/car.png" alt="Image" class="img-fluid rounded-circle">
+                    </div>
+                    <center>
+                    <div class="text p-4">
+                      <span class="text-dark font-weight-bold">De:</span>
+                      <span class="text-secondary">{{ viaje.origen.nombre }}<br></span>
+                      <span class="text-dark font-weight-bold">A:</span>
+                      <span class="text-secondary">{{ viaje.destino.nombre }}<br></span>
+                      <span class="text-dark font-weight-bold">Lugares restantes:</span>
+                      <span class="text-secondary">{{ viaje.cupo }}<br></span>
+                      <span class="text-dark font-weight-bold">Descripcion:</span>
+                      <span class="text-secondary">{{ viaje.descripcion }}<br></span>
+                      <span class="text-dark font-weight-bold">Horario de salida</span>
+                      <span class="text-dark font-weight-bold">Hora:</span>
+                      <span class="text-secondary">{{ viaje.horaFecha|date('H:i:s') }}<br></span>
+                      <span class="text-dark font-weight-bold">Fecha:</span>
+                      <span class="text-secondary">{{ viaje.horaFecha|date('Y-m-d') }}<br></span>
+                      <span class="text-dark font-weight-bold">Costo de recuperacion:</span>
+                      <span class="text-secondary">${{ viaje.tarifa }}<br></span>
+                      <span class="text-dark font-weight-bold">Placas del auto:</span>
+                      <span class="text-secondary">{{ viaje.placasAuto }}<br></span>
+
+                        <span class="text-dark font-weight-bold">califica el viaje:</span>
+                        <p class="clasificacion">
+                          <input id="1-{{ viaje._id }}" type="radio" name="viaje" value="100">
+                            <label for="1-{{ viaje._id }}">★</label>
+                            <input id="2-{{ viaje._id }}" type="radio" name="viaje" value="80">
+                            <label for="2-{{ viaje._id }}">★</label>
+                            <input id="3-{{ viaje._id }}" type="radio" name="viaje" value="60">
+                            <label for="3-{{ viaje._id }}">★</label>
+                            <input id="4-{{ viaje._id }}" type="radio" name="viaje" value="40">
+                            <label for="4-{{ viaje._id }}">★</label>
+                            <input id="5-{{ viaje._id }}"type="radio" name="viaje" value="20">
+                            <label for="5-{{ viaje._id }}">★</label>
+                        </p>
+                        <span class="text-dark font-weight-bold">calificar chofer:</span>
+                        <p class="clasificacion ">
+                          <input id="6-{{ viaje._id }}" type="radio" name="chofer" value="100">
+                            <label for="6-{{ viaje._id }}">★</label>
+                            <input id="7-{{ viaje._id }}" type="radio" name="chofer" value="80">
+                            <label for="7-{{ viaje._id }}">★</label>
+                            <input id="8-{{ viaje._id }}" type="radio" name="chofer" value="60">
+                            <label for="8-{{ viaje._id }}">★</label>
+                            <input id="9-{{ viaje._id }}" type="radio" name="chofer" value="40">
+                            <label for="9-{{ viaje._id }}">★</label>
+                            <input id="0-{{ viaje._id }}"type="radio" name="chofer" value="20">
+                            <label for="0-{{ viaje._id }}">★</label>
+                        </p>
+                        <button id="{{ viaje._id }}" name="cal" type="button" class="btn btn-warning mt-3">calificar</button>
+
+<form action="/viajes/goTomap" method="post">
+  <input type="hidden" name="idViaje" value="{{ viaje._id }}">
+  <button id="{{ viaje._id }}" name="do" type="submit" class="btn btn-warning mt-3" value="{{ viaje._id }}">Partir!!!</button>
+</form>
+                    </div>
+                    </center>
+                  </div>
+                </div>
+              {% endfor %}
+              {% else %}
+              {% endif %}
+
+            </div>
+          <div><center><a class="btn btn-info width-30 " align="center" href="/viajes/main" > Atras </a></center>
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.3&appId=2350677361866891&autoLogAppEvents=1"></script>
+    <script src="../scripts/calif.js"></script>
+
+  </body>
+</html>

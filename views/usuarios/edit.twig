@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit usuario</title>
+    </head>
+    <body>
+        <div class="container">
+            <h3><a href="/usuarios/list">usuario List</a></h3>
+            <h1>Edit usuario</h1>
+            <form action="/usuarios/update/{{ usuario._id }}" method="post">
+                <table>
+                  <table>
+                      <tbody>
+                          <tr>
+                              <td>nombre</td>
+                              <td><input type="text" name="nombre" value="{{ usuario.nombre }}" /></td>
+                          </tr>
+                          <tr>
+                              <td>paterno</td>
+                              <td><input type="text" name="paterno" value="{{ usuario.paterno }}" /></td>
+                          </tr>
+                          <tr>
+                              <td>materno</td>
+                              <td><input type="text" name="materno" value="{{ usuario.materno }}" /></td>
+                          </tr>
+                          <tr>
+                              <td>correo</td>
+                              <td><input type="text" name="correo" value="{{ usuario.correo }}" /></td>
+                          </tr>
+                          <tr>
+                              <td>pass</td>
+                              <td><input type="text" name="pass" value="{{ usuario.pass }}" /></td>
+                          </tr>
+                          <tr>
+                              <td>nacimiento</td>
+                              <td><input type="text" name="nacimiento" value="{{ usuario.nacimiento }}" /></td>
+                          </tr>
+                          <tr>
+                              <td>licencia</td>
+                              <td><input type="text" name="licencia" value="{{ usuario.licencia }}" /></td>
+                          </tr>
+                          <tr>
+                              <td colspan="2"><input type="submit" value="Save" /></td>
+                          </tr>
+                      </tbody>
+                  </table>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

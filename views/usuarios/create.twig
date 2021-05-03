@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create User</title>
+    </head>
+    <body>
+        <div class="container">
+            <h3><a href="/usuarios/list">Lista de usuarios</a></h3>
+            <h1>Crear nuevo usuario</h1>
+            <form action="/usuarios/save" method="post">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>nombre</td>
+                            <td><input type="text" name="nombre" /></td>
+                        </tr>
+                        <tr>
+                            <td>paterno</td>
+                            <td><input type="text" name="paterno" /></td>
+                        </tr>
+                        <tr>
+                            <td>materno</td>
+                            <td><input type="text" name="materno" /></td>
+                        </tr>
+                        <tr>
+                            <td>correo</td>
+                            <td><input type="email" name="correo" /></td>
+                        </tr>
+                        <tr>
+                            <td>pass</td>
+                            <td><input type="password" name="pass" /></td>
+                        </tr>
+                        <tr>
+                            <td>nacimiento</td>
+                            <td><input type="datetime-local" name="nacimiento" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="submit" value="Save" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

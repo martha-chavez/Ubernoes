@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lista de viajes</title>
+    </head>
+    <body>
+        <div class="container">
+        <h3><a href="/viajes/">Seleccionar otro correo</a></h3>
+        <h1>Lista de viajes de {{ correo }}</h1>
+            {% if viajes is not empty %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>id</th>
+
+                            <th>origen</th>
+                            <th>destino</th>
+                            <th>cupo</th>
+                            <th>descripcion</th>
+                            <th>horaFecha</th>
+                            <th>tarifa</th>
+                            <th>placasAuto</th>
+                            <th>calificaciones</th>
+                            <th>participantes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for viaje in viajes.viajes %}
+                        <tr>
+                            <td>{{ viaje._id }}</td>
+                            
+                            <td>{{ viaje.origen.nombre }} <br> {{ viaje.origen.latitud }} <br> {{ viaje.origen.longitud }}</td>
+                            <td>{{ viaje.destino.nombre }} <br> {{ viaje.destino.latitud }} <br> {{ viaje.destino.longitud }}</td>
+                            <td>{{ viaje.cupo }}</td>
+                            <td>{{ viaje.descripcion }}</td>
+                            <td>{{ viaje.horaFecha }}</td>
+                            <td>{{ viaje.tarifa }}</td>
+                            <td>{{ viaje.placasAuto }}
+                            <td>{{ viaje.calificaciones }}</td>
+                            <td>{{ viaje.participantes }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div>Usuario no encotrado...</div>
+            {% endif %}
+            <h3><a href="/viajes/goToAdd">Agregar viaje</a></h3>
+        </div>
+    </body>
+</html>

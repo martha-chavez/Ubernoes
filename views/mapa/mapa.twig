@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Mapa</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+    <link rel="stylesheet" href="../css/leaflet-routing-machine.css" />
+    <style>
+        .map {
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+
+
+  <center>  <div id="map" class="map"></div> </center>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+  integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+  crossorigin=""></script>
+    <script src="../scripts/leaflet-routing-machine.js"></script>
+     <script src="../scripts/leaflet-routing-machine.min.js"></script>
+ <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="scripts/login.js"></script>
+    <input type="hidden" id="latt2" >
+    <input type="hidden" id="long2" >
+    <script >
+
+          var l = {{d_latitud}};
+          var long = {{d_longitud}};
+          var lo = {{o_latitud}};
+          var longo = {{o_longitud}};
+        var map = L.map('map');
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}{r}.png', {
+        attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+    //Ubicacion
+        map.locate({enableHighAccuracy: true})
+        map.on('locationfound', (e) => {
+        const coords = [e.latlng.lat, e.latlng.lng];
+        L.Routing.control({
+        waypoints: [
+            L.latLng(coords),
+            L.latLng(lo,  longo),
+            L.latLng(l,  long)
+        ],
+        routeWhileDragging: true
+        }).addTo(map);
+    });
+    </script>
+
+
+
+</body>
+</html>

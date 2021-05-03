@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Agregar Viaje</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Agregar Viaje</h1>
+            <form action="/viajes/load" method="post">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>correo</td>
+                            <td><input type="email" name="correo" value="master@mail.com" /></td>
+                        </tr>
+                        <tr>
+                            <td>Origen nombre</td>
+                            <td><input type="text" name="o_nombre" /></td>
+                            <td>latitud</td>
+                            <td><input type="text" name="o_latitud" /></td>
+                            <td>longitud</td>
+                            <td><input type="text" name="o_longitud" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="submit" value="Agregar Viaje"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+            <br/>
+            <form action="/viajes/addAuto" method="post">
+              <table>
+                <tbody>
+                  <tr>
+                      <td>correo</td>
+                      <td><input type="email" name="correo" /></td>
+                  </tr>
+                  <tr>
+                      <td>marca</td>
+                      <td><input type="text" name="marca" /></td>
+                  </tr>
+                  <tr>
+                      <td>modelo</td>
+                      <td><input type="text" name="modelo" /></td>
+                  </tr>
+                  <tr>
+                      <td>placas</td>
+                      <td><input type="text" name="placas" /></td>
+                  </tr>
+                  <tr>
+                      <td>noCirculacion</td>
+                      <td><input type="text" name="noCirculacion" /></td>
+                  </tr>
+                  <tr>
+                      <td colspan="2"><input type="submit" value="Agregar Auto" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>{{tittle}}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Wander Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+	<link href="../css/font-awesome.min.css" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Aleo:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+	 rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+
+<body style="background-image: url(../images/fondo.jpg); background-size: cover;">
+	<div id="home">
+		<div class="banner">
+			<!-- nav -->
+			<div class="nav_w3ls pt-4 pb-3 text-center">
+				<nav>
+					<label for="drop" class="toggle">Menu</label>
+					<input type="checkbox" id="drop" />
+					<ul class="menu">
+						<li><a href="/viajes/main">Inicio</a></li>
+						<li><a href="/viajes/mviajes">Mis Viajes</a></li>
+						<li><a href="/viajes/goToAdd">Nuevo Viaje</a></li>
+						<li><a href="/viajes/getAll">Disponibles</a></li>
+						<li><a href="/logout">Salir</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+			<div class="viaje pt-4 pb-3 text-center">
+			<div class="banner-text-2 text-right">
+				<div class="banner-bot-2">
+					<h1><a href="" class="logo text-wh editContent">Registro de viaje</a></h1>
+				</div>
+			</div>
+			</div>
+
+	</div>
+	<!-- formulario  -->
+	<section class="page-section" id="contact">
+		<div class="container">
+			<br/>
+			<h2 class="section-heading center text-uppercase">UberNoes</h2>
+			<br/>
+			<div class="row">
+				{% block login %}{% endblock %}
+			</div>
+	</section>
+  <!-- //formulario -->
+
+	<!-- copyright -->
+	<br/>
+	<div class="copy_right mb-5">
+		<p class="text-center text-bl let">© 2019 Wander. All rights reserved | Design by
+			<a href="http://w3layouts.com/">W3layouts</a>
+		</p>
+	</div>
+	<!-- //copyright -->
+
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center"></a>
+	<!-- //move top icon -->
+{% block resources %}{% endblock %}
+
+{% block modal %}{% endblock %}
+
+</body>
+
+</html>

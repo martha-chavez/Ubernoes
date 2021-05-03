@@ -1,0 +1,159 @@
+{% extends 'RegViaje.twig' %}
+
+{% block login %}
+<form action="/viajes/add" method="post">
+    <div class="col-lg-12 text-center">
+				<h3 class="section-heading center text-uppercase">Datos del viaje</h3>
+		</div>
+  {# {% if origenes.length > 0 %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="origen">Origen</label>
+    <select class="form-control" style="padding:0" name="origen">
+    {% for lugar in origenes %}
+        <p>yo :   {{lugar}}</p>
+
+       <option value="{{ lugar.origen.nombre }}">{{ lugar.origen.nombre }}</option>
+    {% endfor %}
+    </select>
+    </div>
+    <div class="form-group col-md-6">
+    <label for="destino">Destino</label>
+    <select class="form-control" style="padding:0" name="destino">
+    {% for lugar in origenes %}
+        <p>desss {{lugar}}</p>
+
+       <option value="{{ lugar.origen.nombre }}">{{ lugar.origen.nombre }}</option>
+    {% endfor %}
+    </select>
+    </div>
+  </div>
+  {% else %} #}
+  <div class="form-group">
+    <input type="text" name="o_nombre" placeholder="Origen" />
+    <input type="text" name="o_latitud" placeholder="Latitud"/>
+    <input type="text" name="o_longitud" placeholder="Longitud" />
+  </div>
+  <div class="form-group">
+    <input type="text" name="d_nombre" placeholder="Destino" />
+    <input type="text" name="d_latitud" placeholder="Latitud"/>
+    <input type="text" name="d_longitud"  placeholder="Longitud"/>
+  </div>
+  {# {% endif %} #}
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <div class="form-group">
+    <label for="cupo">Cupo</label>
+    <input class="form-control" type="number" name="cupo" placeholder="Total de personas" required="">
+  </div>
+  </div>
+  <div class="form-group col-md-6">
+    <div class="form-group">
+      <label for="descripcion">Descripcion</label>
+      <input class="form-control" type="text" name="descripcion" placeholder="Breve descripcion" required="">
+  </div>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <div class="form-group">
+    <label for="fecha">Fecha</label>
+    <input id="inputDate" class="form-control" type="date" name="fecha" placeholder="Fecha" required="">
+  </div>
+  </div>
+  <div class="form-group col-md-6">
+    <div class="form-group">
+    <label for="hora">Hora</label>
+    <input class="form-control" type="time" name="hora" placeholder="Hora" required="">
+  </div>
+  </div>
+</div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+    <div class="form-group">
+      <label for="tarifa">Tarifa</label>
+      <input class="form-control" type="number" name="tarifa" placeholder="Costo por persona" required="">
+    </div>
+  </div>
+  {% if autos.length > 0 %}
+  <div class="form-group col-md-6">
+    <div class="form-group">
+    <label for="modelo">Autos registrados</label>
+    <select class="form-control" style="padding:0" name="modelo">
+    {% for auto in autos %}
+       <option value="{{auto.modelo}}">{{ auto.marca }} {{ auto.modelo }}</option>
+    {% endfor %}
+    </select>
+  </div>
+  </div>
+  {% endif %}
+</div>
+<div class="form-row">
+  <div class="form-group col-md-6">
+      <label for="licencia">Licencia</label>
+      <input class="form-control" type="text" name="licencia" value="{{licencia}}" required="">
+  </div>
+  <div class="form-group col-md-6" style="margin-top: 10px;">
+    <div class="text-center">
+      <button id="btnAddCar" type="button" class="btn btn-dark mt-4">Formulario añadir auto</button>
+    </div>
+  </div>
+  <div class="form-group col-md-12" style="margin-top: 10px;">
+    <div class="text-center">
+      <button type="submit" class="btn btn-dark submit mt-2">Agregar Viaje</button>
+    </div>
+  </div>
+</div>
+</form>
+{% endblock %}
+
+{% block resources %}
+  <script src="../scripts/viajes.js"></script>
+{% endblock %}
+
+{% block modal %}
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Agregar Auto</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+      <form action="/viajes/addAuto" method="post">
+			<div class="modal-body text-center">
+        {% if autos.length >= 0 %}
+          <table>
+            <tbody>
+              <tr>
+                  <td>Marca</td>
+                  <td><input type="text" name="marca" required/></td>
+              </tr>
+              <tr>
+                  <td>Modelo</td>
+                  <td><input type="text" name="modelo" required/></td>
+              </tr>
+              <tr>
+                  <td>Placas</td>
+                  <td><input type="text" name="placas" required/></td>
+              </tr>
+              <tr>
+                  <td>Número de Circulacion</td>
+                  <td><input type="text" name="noCirculacion" required/></td>
+              </tr>
+            </tbody>
+          </table>
+        {% endif %}
+			</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+      </div>
+      </form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
